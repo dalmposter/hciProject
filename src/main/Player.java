@@ -45,6 +45,11 @@ public class Player
 		score += gained;
 	}
 	
+	public void resetScore()
+	{
+		score = 0;
+	}
+	
 	public int takeTurn()
 	{
 		ArrayList<Integer> res = new ArrayList<>();

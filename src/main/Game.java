@@ -6,14 +6,14 @@ public class Game
 	public Player p1, p2;
 	private boolean p1Leading, tie, p1Turn;
 	
-	public static void main(String args[])
+	/*public static void main(String args[])
 	{
 		Game mainGame = new Game(new Player("Player 1"), new Player("Player 2"), 25);
 		while(true)
 		{
 			if(mainGame.playTurn()) break;
 		}
-	}
+	}*/
 	
 	public Game(Player p1, Player p2, int targetScore)
 	{
@@ -23,6 +23,22 @@ public class Game
 		p1Leading = false;
 		p1Turn = true;
 		round = 1;
+	}
+	
+	public Player getCurrentPlayer()
+	{
+		if(p1Turn) return p1;
+		return p2;
+	}
+	
+	public Player getP1()
+	{
+		return p1;
+	}
+	
+	public Player getP2()
+	{
+		return p2;
 	}
 	
 	public int getGoal()
@@ -59,9 +75,8 @@ public class Game
 	public boolean playTurn()
 	{
 		//get current player
-		Player currentPlayer;
+		Player currentPlayer = p2;
 		if(p1Turn) currentPlayer = p1;
-		else currentPlayer = p2;
 		
 		//play turn
 		int scored = currentPlayer.takeTurn();
