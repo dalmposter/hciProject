@@ -1,10 +1,13 @@
 package main;
 
+import java.util.ArrayList;
+
 public class Game
 {
 	private int goal, round;
 	public Player p1, p2;
 	private boolean p1Leading, tie, p1Turn;
+	private Dice[] dice;
 	
 	/*public static void main(String args[])
 	{
@@ -23,6 +26,12 @@ public class Game
 		p1Leading = false;
 		p1Turn = true;
 		round = 1;
+		dice = new Dice[3];
+		
+		for(int i = 0; i < 3; i++)
+		{
+			dice[i] = new Dice(6);
+		}
 	}
 	
 	public Player getCurrentPlayer()
@@ -79,7 +88,45 @@ public class Game
 		if(p1Turn) currentPlayer = p1;
 		
 		//play turn
-		int scored = currentPlayer.takeTurn();
+		ArrayList<Integer> res = new ArrayList<>();
+		System.out.println("rolled: ");
+		for(Dice d : dice)
+		{
+			res.add(d.roll());
+			System.out.print(d.lastRoll() + ", ");
+		}
+		
+		int scored;
+		
+		if(res.get(0) == res.get(1))
+		{
+			if(res.get(0) == res.get(2))
+			{
+				//3 of a kind
+				scored = 18;
+			}
+			else
+			{
+				//pair on 0 and 1
+				scored = res.get(0) * 2;
+			}
+		}
+		else if(res.get(0) == res.get(2))
+		{
+			//pair on 0 and 2
+			scored = res.get(0) * 2;
+		}
+		else if(res.get(1) == res.get(2))
+		{
+			//pair on 1 and 2
+			scored = res.get(1) * 2;
+		}
+		else
+		{
+			//no sets
+			scored = 1;
+		}
+		
 		System.out.println(currentPlayer.getName() + " got " + scored + " points!");
 		currentPlayer.addScore(scored);
 		updateLeading();
@@ -122,5 +169,45 @@ public class Game
 			return 2;
 		}
 		else return 0;
+	}
+	
+	public int takeTurn()
+	{
+		ArrayList<Integer> res = new ArrayList<>();
+		System.out.println("rolled: ");
+		for(Dice d : dice)
+		{
+			res.add(d.roll());
+			System.out.print(d.lastRoll() + ", ");
+		}
+		
+		if(res.get(0) == res.get(1))
+		{
+			if(res.get(0) == res.get(2))
+			{
+				//3 of a kind
+				return 18;
+			}
+			else
+			{
+				//pair on 0 and 1
+				return res.get(0) * 2;
+			}
+		}
+		else if(res.get(0) == res.get(2))
+		{
+			//pair on 0 and 2
+			return res.get(0) * 2;
+		}
+		else if(res.get(1) == res.get(2))
+		{
+			//pair on 1 and 2
+			return res.get(1) * 2;
+		}
+		else
+		{
+			//no sets
+			return 1;
+		}
 	}
 }
