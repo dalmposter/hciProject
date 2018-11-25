@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="profile picture:" />
+            <ImageView fx:id="img_profilePic" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btn_toggleDef" mnemonicParsing="false" onAction="#toggleDefClicked" text="Toggle default" />
+                  <Button fx:id="btn_uploadPic" mnemonicParsing="false" onAction="#uploadPicClicked" text="Upload photo" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="Username:" />
+                  <TextField fx:id="txt_username" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" top="25.0" />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="225.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btn_helpRegGuest" mnemonicParsing="false" onAction="#helpRegGuestClicked" text="?">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="btn_regGuest" mnemonicParsing="false" onAction="#regGuestClicked" text="Register as guest">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <Button fx:id="btn_cancel" mnemonicParsing="false" onAction="#cancelClicked" text="Cancel">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="225.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btn_regPlayer" mnemonicParsing="false" onAction="#regPlayerClicked" text="Save local player">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Button>
+                  <Button fx:id="btn_helpRegPlayer" mnemonicParsing="false" onAction="#helpRegPlayerClicked" text="?">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="25.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <top>
+      <Label alignment="TOP_CENTER" text="Register new player" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="25.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+   </top>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</BorderPane>

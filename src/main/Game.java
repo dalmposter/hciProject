@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game
 {
-	private int goal, round;
+	private int goal, turn;
 	public Player p1, p2;
 	private boolean p1Leading, tie, p1Turn;
 	private Dice[] dice;
@@ -18,14 +18,22 @@ public class Game
 		}
 	}*/
 	
+	public Game(Game lastGame)
+	{
+		this(lastGame.getP1(), lastGame.getP2(), lastGame.getGoal());
+	}
+	
 	public Game(Player p1, Player p2, int targetScore)
 	{
 		this.p1 = p1;
 		this.p2 = p2;
+		p1.reset();
+		p2.reset();
 		goal = targetScore;
-		p1Leading = false;
+		p1Leading = true;
 		p1Turn = true;
-		round = 1;
+		tie = true;
+		turn = 1;
 		dice = new Dice[3];
 		
 		for(int i = 0; i < 3; i++)
@@ -55,15 +63,19 @@ public class Game
 		return goal;
 	}
 	
-	public int getRound()
+	public int getTurn()
 	{
-		return round;
+		return turn;
 	}
 	
-	public String getLeader()
+	public boolean isTie()
 	{
-		if(p1Leading) return p1.getName();
-		else return p2.getName();
+		return tie;
+	}
+	
+	public boolean isP1Leading()
+	{
+		return p1Leading;
 	}
 	
 	private void doWin(int winner)
@@ -71,7 +83,7 @@ public class Game
 		System.out.println("player " + winner + " won! (3 means a draw)");
 		System.out.println(p1.getName() + " scored " + p1.getScore());
 		System.out.println(p2.getName() + " scored " + p2.getScore());
-		System.out.println("The game lasted " + getRound() + " rounds and the goal was " + getGoal() + " points");
+		System.out.println("The game lasted " + getTurn() + " turns and the goal was " + getGoal() + " points");
 	}
 	
 	private void updateLeading()
@@ -81,7 +93,7 @@ public class Game
 		else tie = true;
 	}
 	
-	public boolean playTurn()
+	public ArrayList<Integer> playTurn()
 	{
 		//get current player
 		Player currentPlayer = p2;
@@ -131,21 +143,26 @@ public class Game
 		currentPlayer.addScore(scored);
 		updateLeading();
 		
-		//if it was p2's turn it's been a whole round so check for a win
-		if(!p1Turn)
-		{
-			if(checkWin() > 0) return true;
-			round++;
-		}
-		
 		//change player
 		p1Turn = !p1Turn;
-		return false;
+		turn++;
+		
+		if(p1.getScore() == p2.getScore()) tie = true;
+		else tie = false;
+
+		//return nice list of rolls to set label
+		return res;
 	}
 	
 	//returns 0 if no one has won yet, 1 or 2 if p1 or p2 has won, or 3 if there is a tie
 	public int checkWin()
 	{
+		//if we're about to play an even numbered turn there can't be a winner as its mid round
+		if(turn % 2 == 0)
+		{
+			System.out.println("Rejected win check as it is turn: " + turn + " (mid round)");
+			return 0;
+		}
 		if(p1.getScore() >= goal)
 		{
 			if(p2.getScore() >= goal)

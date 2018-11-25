@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label text="Dice Mania" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                     <children>
+                        <ComboBox fx:id="combo_p1" prefWidth="200.0" style="-fx-font-size: 20;" />
+                        <Label text="VS" />
+                        <ComboBox fx:id="combo_p2" prefWidth="200.0" style="-fx-font-size: 20;" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#playClicked" text="Play!">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Button>
+               </children>
+            </VBox>
+            <Button fx:id="btn_newPlayer" mnemonicParsing="false" onAction="#newPlayerClicked" text="Register New Player">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Button fx:id="btn_quit" mnemonicParsing="false" onAction="#quitClicked" text="Quit">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

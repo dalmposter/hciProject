@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lbl_careerWinsP1" text="Career wins: 0" />
+                  <Label fx:id="lbl_winsP1" text="Wins: 0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lbl_resultP1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_lastScoreP1" text="Scored: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_scoreP1" text="Total score: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding></VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lbl_careerWinsP2" text="Career wins: 0" />
+                  <Label fx:id="lbl_winsP2" text="Wins: 0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lbl_resultP2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_lastScoreP2" text="Scored: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_scoreP2" text="Total score: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding></VBox>
+   </right>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btn_rollP1" mnemonicParsing="false" onAction="#rollP1Clicked" text="Roll p1">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="149.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btn_restart" mnemonicParsing="false" onAction="#restartClicked" text="Restart" />
+                  <Button fx:id="btn_gotoMenu" mnemonicParsing="false" onAction="#gotoMenuClicked" text="Quit to menu" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </VBox>
+            <Button fx:id="btn_rollP2" mnemonicParsing="false" onAction="#rollP2Clicked" text="Roll p2">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="275.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="img_p1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="126.0">
+                     <children>
+                        <ImageView fx:id="img_p1Leading" fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lbl_p1" text="Player1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="141.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="img_tie" fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label text="vs" />
+                  <Label fx:id="lbl_goal" text="First to: 100">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="275.0" spacing="10.0">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="125.0">
+                     <children>
+                        <ImageView fx:id="img_p2Leading" fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lbl_p2" text="Player2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <ImageView fx:id="img_p2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="300.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="img_d0" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img_d1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img_d2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lbl_resultMsg" />
+                  <Label fx:id="lbl_result" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
