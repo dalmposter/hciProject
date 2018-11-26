@@ -5,7 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import main.Game;
 import main.Player;
 
@@ -19,6 +25,7 @@ import javafx.event.ActionEvent;
 public class GameController extends Controller
 {
 	Game currGame;
+	boolean tutorial = false;
 	
 	@FXML
     private ImageView img_p1;
@@ -111,6 +118,18 @@ public class GameController extends Controller
     private ImageView img_tie;
     
     @FXML
+    private Label lbl_tutorial;
+    
+    @FXML
+    private VBox vbox_dice;
+    
+    @FXML
+    private VBox vbox_p1;
+    
+    @FXML
+    private VBox vbox_p2;
+    
+    @FXML
     void restartClicked(ActionEvent event)
     {
     	currGame = new Game(currGame);
@@ -130,6 +149,10 @@ public class GameController extends Controller
     	gotoMenu();
     }
 	
+   	/**
+   	 * Updates UI if we have a winner
+   	 * @param winner the player who won or 3 if there was a tie
+   	 */
     private void doWin(int winner)
     {
     	btn_rollP1.setDisable(true);
@@ -153,6 +176,12 @@ public class GameController extends Controller
     @FXML
     void rollP1Clicked(ActionEvent event)
     {
+    	if(tutorial)
+    	{
+    		lbl_tutorial.setText("You score points based on your roll.\n3-of-a-kind: 18 points, pair: sum of the pair\notherwise: 1 point. Click '" + btn_rollP2.getText() + "' to continue");
+    	}
+    	
+    	//Take turn in currGame
     	ArrayList<Integer> result = currGame.playTurn();
     	
     	btn_rollP1.setDisable(true);
@@ -162,6 +191,7 @@ public class GameController extends Controller
     	
     	lbl_resultP1.setText("?, ?, ?");
     	
+    	//Create dice rolling threads for display purposes
     	displays.add(new DiceDisplay(0, result.get(0), btn_rollP2, img_d0, lbl_resultP1, resString));
     	displays.add(new DiceDisplay(1, result.get(1), btn_rollP2, img_d1, lbl_resultP1, resString));
     	displays.add(new DiceDisplay(2, result.get(2), btn_rollP2, img_d2, lbl_resultP1, resString));
@@ -178,6 +208,13 @@ public class GameController extends Controller
     @FXML
     void rollP2Clicked(ActionEvent event)
     {
+    	if(tutorial)
+    	{
+    		lbl_tutorial.setText("Whoever's turn it is has their name in bold\nThe current leader has a crown over their name\nThis concludes the tutorial, Have fun!");
+    		tutorial = false;
+    	}
+    	
+    	//Take turn in currGame
     	ArrayList<Integer> result = currGame.playTurn();
     	
     	btn_rollP2.setDisable(true);
@@ -187,6 +224,7 @@ public class GameController extends Controller
     	
     	lbl_resultP2.setText("?, ?, ?");
     	
+    	//Create dice rolling threads for display purposes
     	displays.add(new DiceDisplay(0, result.get(0), btn_rollP1, img_d0, lbl_resultP2, resString));
     	displays.add(new DiceDisplay(1, result.get(1), btn_rollP1, img_d1, lbl_resultP2, resString));
     	displays.add(new DiceDisplay(2, result.get(2), btn_rollP1, img_d2, lbl_resultP2, resString));
@@ -196,6 +234,7 @@ public class GameController extends Controller
     	updateP2();
     	updateLeader();
     	
+    	//check if we have a winner
     	int res = currGame.checkWin();
     	if(res > 0) doWin(res);
     	else
@@ -205,12 +244,26 @@ public class GameController extends Controller
     	}
     }
 
+    public void initialise(Player p1, Player p2, int goal, boolean tutorial)
+    {
+    	initialise(p1, p2, goal);
+    	this.tutorial = tutorial;
+    	
+    	if(tutorial)
+    	{
+    		lbl_tutorial.setText("In Dice Mania you and your opponent will take turns\nrolling 3 dice. Click '" + btn_rollP1.getText() + "' to do so.");
+    	}
+    }
+    
     public void initialise(Player p1, Player p2, int goal)
     {
     	//TODO: init
     	currGame = new Game(p1, p2, goal);
     	p1.resetWins();
     	p2.resetWins();
+    	
+    	btn_rollP1.setText("Roll " + p1.getName());
+    	btn_rollP2.setText("Roll " + p2.getName());
     	
     	btn_rollP2.setDisable(true);
     	
@@ -232,20 +285,30 @@ public class GameController extends Controller
     	updateLeader();
     	
     	lbl_p1.setStyle("-fx-font-weight: bold");
+
+    	BackgroundImage BI = new BackgroundImage(new Image("/table.jpeg"), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+    	vbox_dice.setBackground(new Background(BI));
+    	vbox_p1.setBackground(new Background(BI));
+    	vbox_p2.setBackground(new Background(BI));
     }
-    
+
+    //Update data displays for p1
     private void updateP1()
     {
     	lbl_scoreP1.setText("Total score: " + currGame.getP1().getScore());
     	lbl_lastScoreP1.setText("Scored: " + currGame.getP1().getLastScore());
     }
     
+    //Update data displays for p2
     private void updateP2()
     {
     	lbl_scoreP2.setText("Total score: " + currGame.getP2().getScore());
     	lbl_lastScoreP2.setText("Scored: " + currGame.getP2().getLastScore());
     }
     
+    /**
+     * Updates visual queues as to who has the most points
+     */
     private void updateLeader()
     {	
     	System.out.println("Checking leader: ");
@@ -270,17 +333,6 @@ public class GameController extends Controller
     		img_p2Leading.setVisible(false);
     		img_tie.setVisible(true);
     		System.out.println("Tie");
-    	}
-    }
-    
-    private void checkWin()
-    {
-    	int result = currGame.checkWin();
-    	
-    	if(result > 0)
-    	{
-    		btn_rollP1.setDisable(true);
-    		btn_rollP1.setDisable(true);
     	}
     }
 }

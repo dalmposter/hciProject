@@ -9,20 +9,13 @@ public class Game
 	private boolean p1Leading, tie, p1Turn;
 	private Dice[] dice;
 	
-	/*public static void main(String args[])
-	{
-		Game mainGame = new Game(new Player("Player 1"), new Player("Player 2"), 25);
-		while(true)
-		{
-			if(mainGame.playTurn()) break;
-		}
-	}*/
-	
+	//Create a new game with same players and goal as the last one
 	public Game(Game lastGame)
 	{
 		this(lastGame.getP1(), lastGame.getP2(), lastGame.getGoal());
 	}
 	
+	//Standard constructor
 	public Game(Player p1, Player p2, int targetScore)
 	{
 		this.p1 = p1;
@@ -86,6 +79,7 @@ public class Game
 		System.out.println("The game lasted " + getTurn() + " turns and the goal was " + getGoal() + " points");
 	}
 	
+	//Update booleans that track who's winning
 	private void updateLeading()
 	{
 		if(p1.getScore() > p2.getScore()) p1Leading = true;
@@ -154,7 +148,10 @@ public class Game
 		return res;
 	}
 	
-	//returns 0 if no one has won yet, 1 or 2 if p1 or p2 has won, or 3 if there is a tie
+	/**
+	 * Check if we have a winner
+	 * @return the player who won, 0 if the game is ongoing or 3 if there was a tie
+	 */
 	public int checkWin()
 	{
 		//if we're about to play an even numbered turn there can't be a winner as its mid round
@@ -188,6 +185,10 @@ public class Game
 		else return 0;
 	}
 	
+	/**
+	 * Play next turn
+	 * @return points gained by current player
+	 */
 	public int takeTurn()
 	{
 		ArrayList<Integer> res = new ArrayList<>();

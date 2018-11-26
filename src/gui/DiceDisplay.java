@@ -8,6 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Display thread for a single dice
+ * 
+ * @author Dominic Cousins
+ *
+ */
 public class DiceDisplay extends Thread
 {
 	public static boolean[] done = { false, false, false };
@@ -19,6 +25,15 @@ public class DiceDisplay extends Thread
 	private Label lbl;
 	private String res;
 	
+	/**
+	 * 
+	 * @param id this dice's number (0-2)
+	 * @param result the number this dice should end on
+	 * @param nextEnable the play turn button that should be enabled when the dice are rolled
+	 * @param myView the view to be populated with sprites by this dice
+	 * @param lbl the label to display the results in when all dice are finished
+	 * @param res the text to be put in lbl
+	 */
 	public DiceDisplay(int id, int result, Button nextEnable, ImageView myView, Label lbl, String res)
 	{
 		done[id] = false;
@@ -30,6 +45,9 @@ public class DiceDisplay extends Thread
 		this.lbl = lbl;
 	}
 	
+	/**
+	 * Cycles through numbers randomly on a dice, eventually landing on [result]
+	 */
 	public void run()
 	{
 		int thisShow = 0;

@@ -6,11 +6,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(145, 223, 252);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <Label text="Dice Mania" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="657.0" style="-fx-background-color: #91DFFC;" text="Dice Mania" BorderPane.alignment="CENTER">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
          <opaqueInsets>
             <Insets />
@@ -21,22 +21,48 @@
       </Label>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: 91DFFC;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgb(228,145,252);">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Label text="Point goal:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_pointGoal" prefHeight="39.0" prefWidth="66.0" text="25" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="600.0" spacing="25.0">
                      <children>
                         <ComboBox fx:id="combo_p1" prefWidth="200.0" style="-fx-font-size: 20;" />
                         <Label text="VS" />
                         <ComboBox fx:id="combo_p2" prefWidth="200.0" style="-fx-font-size: 20;" />
                      </children>
                   </HBox>
-                  <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#playClicked" text="Play!">
-                     <font>
-                        <Font size="22.0" />
-                     </font></Button>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#playClicked" text="Play!">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_tutorial" mnemonicParsing="false" onAction="#tutorialClicked" text="Tutorial">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
             </VBox>
             <Button fx:id="btn_newPlayer" mnemonicParsing="false" onAction="#newPlayerClicked" text="Register New Player">
                <font>
@@ -47,6 +73,9 @@
                   <Font size="22.0" />
                </font></Button>
          </children>
+         <padding>
+            <Insets top="-20.0" />
+         </padding>
       </VBox>
    </center>
 </BorderPane>

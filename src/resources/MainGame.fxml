@@ -8,14 +8,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #91DFFC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_p1" alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="lbl_careerWinsP1" text="Career wins: 0" />
-                  <Label fx:id="lbl_winsP1" text="Wins: 0" />
+                  <Label fx:id="lbl_careerWinsP1" text="Career wins: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_winsP1" text="Wins: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -37,18 +43,21 @@
                   </Label>
                </children>
             </VBox>
-         </children>
-         <padding>
-            <Insets left="10.0" />
-         </padding></VBox>
+         </children></VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_p2" alignment="CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="lbl_careerWinsP2" text="Career wins: 0" />
-                  <Label fx:id="lbl_winsP2" text="Wins: 0" />
+                  <Label fx:id="lbl_careerWinsP2" text="Career wins: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_winsP2" text="Wins: 0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -70,10 +79,7 @@
                   </Label>
                </children>
             </VBox>
-         </children>
-         <padding>
-            <Insets right="10.0" />
-         </padding></VBox>
+         </children></VBox>
    </right>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" BorderPane.alignment="CENTER">
@@ -101,7 +107,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="275.0" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="275.0" spacing="10.0" style="-fx-background-color: #DA91FC;">
                <children>
                   <ImageView fx:id="img_p1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="126.0">
@@ -119,7 +125,7 @@
                   </VBox>
                </children>
                <padding>
-                  <Insets left="10.0" />
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
                </padding>
             </HBox>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="141.0" spacing="10.0">
@@ -128,7 +134,7 @@
                   <Label text="vs" />
                   <Label fx:id="lbl_goal" text="First to: 100">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -136,7 +142,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="275.0" spacing="10.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="275.0" spacing="10.0" style="-fx-background-color: #DA91FC;">
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="125.0">
                      <children>
@@ -154,17 +160,14 @@
                   <ImageView fx:id="img_p2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <padding>
-                  <Insets right="10.0" />
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
                </padding>
             </HBox>
          </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
       </HBox>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox_dice" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="300.0" spacing="10.0">
                <children>
@@ -175,8 +178,10 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="lbl_resultMsg" />
-                  <Label fx:id="lbl_result" />
+                  <Label fx:id="lbl_tutorial" alignment="CENTER" contentDisplay="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                </children>
             </VBox>
          </children>

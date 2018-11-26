@@ -16,6 +16,9 @@ public class Controller
 		this.stage = stage;
 	}
 	
+	//Functions to change scene, inherited by all controllers
+	//-----------------------------------------------------------------------------------------------------
+	
 	protected void gotoMenu()
 	{
 		MenuController controller = new MenuController();
@@ -66,7 +69,7 @@ public class Controller
 		}
 	}
 	
-	protected void gotoGame(Player p1, Player p2)
+	protected void gotoGame(Player p1, Player p2, int goal, boolean tutorial)
 	{
 		GameController controller = new GameController();
 		
@@ -82,7 +85,7 @@ public class Controller
 		
 			controller.setStage(stage);
 			
-			controller.initialise(p1, p2, 25);
+			controller.initialise(p1, p2, goal, tutorial);
 		}
 		catch(Exception e)
 		{

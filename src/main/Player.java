@@ -26,6 +26,8 @@ public class Player
 	 * careerWins
 	 */
 	
+	//empty constructor, for use when reading player from disk
+	//call followed by player.readFromDisk
 	public Player(String name)
 	{
 		this.name = name;
@@ -33,6 +35,7 @@ public class Player
 		score = 0;
 	}
 	
+	//standard constructor
 	public Player(String name, File pic, int defPicStatus)
 	{
 		this(name);
@@ -45,6 +48,10 @@ public class Player
 		return defaultPicStatus;
 	}
 	
+	/**
+	 * Get this players profile picture
+	 * @return profile picture as Image object
+	 */
 	public Image getPicImage()
 	{
 		if(defaultPicStatus == 0)
@@ -138,6 +145,10 @@ public class Player
 		this.pic = pic;
 	}
 	
+	/**
+	 * Writes this players data to [home directory]/Dice Mania/[name].dat
+	 * @return whether the write was successful
+	 */
 	public boolean writeToDisk()
 	{
 		try
@@ -173,6 +184,10 @@ public class Player
 		return true;
 	}
 	
+	/**
+	 * Read player file [name].dat and populate this object with it's data
+	 * @return whether read was successful
+	 */
 	public boolean readFromDisk()
 	{
 		try

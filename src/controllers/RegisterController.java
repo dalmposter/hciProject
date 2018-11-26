@@ -4,21 +4,16 @@ import javafx.stage.FileChooser;
 import main.Player;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 
 import javax.swing.JOptionPane;
 
 import gui.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.apache.commons.io.FileUtils;
 
 public class RegisterController extends Controller
 {
@@ -61,9 +56,12 @@ public class RegisterController extends Controller
     	JOptionPane.showMessageDialog(null, "Choosing to make a guest player means the player (name and picture) will be lost when you close Dice Mania", "help", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    //Creates new instance of Player with values from gui
+    //adds this to tempPlayers
     @FXML
     void regGuestClicked(ActionEvent event)
     {
+    	//Username must be non empty
     	if(!txt_username.getText().isEmpty())
     	{
     		int picStatus = 0;

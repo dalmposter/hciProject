@@ -6,17 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import gui.MainApp;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import main.Player;
+import javafx.scene.control.TextField;
 
 public class MenuController extends Controller
 {
@@ -37,9 +32,29 @@ public class MenuController extends Controller
     private Button btn_play;
     
     @FXML
-    void playClicked(ActionEvent event)
-    {	
-    	if(combo_p1.getValue().equals(combo_p2.getValue()) || "".equals(combo_p1.getValue()) || "".equals(combo_p2.getValue()))
+    private TextField txt_pointGoal;
+    
+    @FXML
+    private Button btn_tutorial;
+    
+    private void play(boolean tutorial)
+    {
+    	int goal = 0;
+    	
+    	try
+    	{
+    		goal = Integer.valueOf(txt_pointGoal.getText());
+    	}
+    	catch (Exception e)
+    	{
+    		System.out.println("Exception on point goal");
+    		e.printStackTrace();
+    	}
+    	if(goal <= 0)
+    	{
+    		JOptionPane.showMessageDialog(null, "You must choose a whole number greater than 0 for the point goal", "error", JOptionPane.ERROR_MESSAGE);
+    	}
+    	else if(combo_p1.getValue().equals(combo_p2.getValue()) || "".equals(combo_p1.getValue()) || "".equals(combo_p2.getValue()))
     	{
     		JOptionPane.showMessageDialog(null, "You must select 2 different players to battle it out in Dice Mania!", "error", JOptionPane.ERROR_MESSAGE);
     	}
@@ -90,8 +105,20 @@ public class MenuController extends Controller
     			}
     		}
     		
-    		gotoGame(p1, p2);
+    		gotoGame(p1, p2, goal, tutorial);
     	}
+    }
+    
+    @FXML
+    void tutorialClicked(ActionEvent event)
+    {
+    	play(true);
+    }
+    
+    @FXML
+    void playClicked(ActionEvent event)
+    {	
+    	play(false);
     }
 
     @FXML
@@ -138,5 +165,7 @@ public class MenuController extends Controller
     	
     	combo_p1.setValue(MainApp.DEFAULT_PLAYERS[0]);
     	combo_p2.setValue(MainApp.DEFAULT_PLAYERS[1]);
+    	
+    	txt_pointGoal.setText("25");
     }
 }

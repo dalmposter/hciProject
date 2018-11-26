@@ -19,10 +19,8 @@ import main.Player;
 
 public class MainApp extends Application
 {
-
-	//TODO: move over to passing stages to controllers
 	public static ArrayList<Player> tempPlayers;
-	//public static ArrayList<String> localPlayers;
+
 	public static final String[] DEFAULT_PLAYERS = {"[Player 1]", "[Player 2]"};
 	public static boolean canSavePlayers;
 	public static String dataLocation;
@@ -51,7 +49,7 @@ public class MainApp extends Application
 	{	
 		launch(args);
 	}
-	
+
 	private static void initialise()
 	{
 		tempPlayers = new ArrayList<>();
@@ -83,6 +81,10 @@ public class MainApp extends Application
 		}
 	}
 	
+	/**
+	 * Creates the data folder if it doesn't already exist
+	 * @return true if it already existed
+	 */
 	public static boolean checkDataDir()
 	{
 		File data = new File(dataLocation);
