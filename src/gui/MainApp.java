@@ -44,7 +44,14 @@ public class MainApp extends Application
 		controller.initialise();
 		controller.setStage(primaryStage);
 		
-		JOptionPane.showMessageDialog(null, "Welcome to Dice Mania, the game of unreasonable luck!\nMake sure to tick the tutorial box if you're new, otherwise you know what's up, enjoy!", "welcome", JOptionPane.INFORMATION_MESSAGE);
+		Runnable intro = new Runnable()
+		{
+			public void run()
+			{
+				JOptionPane.showMessageDialog(null, "Welcome to Dice Mania, the game of unreasonable luck!\nMake sure to tick the tutorial box if you're new, otherwise you know what's up, enjoy!", "welcome", JOptionPane.INFORMATION_MESSAGE);
+			}
+		};
+		new Thread(intro).start();
 	}
 
 	public static void main(String[] args)
