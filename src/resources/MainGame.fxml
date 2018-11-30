@@ -16,11 +16,11 @@
                <children>
                   <Label fx:id="lbl_careerWinsP1" text="Career wins: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Label>
                   <Label fx:id="lbl_winsP1" text="Wins: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Label>
                </children>
             </VBox>
@@ -33,12 +33,12 @@
                   </Label>
                   <Label fx:id="lbl_lastScoreP1" text="Scored: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="lbl_scoreP1" text="Total score: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -52,11 +52,11 @@
                <children>
                   <Label fx:id="lbl_careerWinsP2" text="Career wins: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Label>
                   <Label fx:id="lbl_winsP2" text="Wins: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Label>
                </children>
             </VBox>
@@ -69,12 +69,12 @@
                   </Label>
                   <Label fx:id="lbl_lastScoreP2" text="Scored: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="lbl_scoreP2" text="Total score: 0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -178,10 +178,13 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="lbl_tutorial" alignment="CENTER" contentDisplay="CENTER">
+                  <Label fx:id="lbl_tutorial" alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: white;">
                      <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
          </children>

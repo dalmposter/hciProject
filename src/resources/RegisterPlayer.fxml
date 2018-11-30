@@ -46,21 +46,21 @@
                      <font>
                         <Font size="14.0" />
                      </font></Button>
-                  <Button fx:id="btn_regGuest" mnemonicParsing="false" onAction="#regGuestClicked" text="Register as guest">
+                  <Button fx:id="btn_regGuest" mnemonicParsing="false" onAction="#regGuestClicked" text="Register guest">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Button>
                </children>
             </HBox>
             <Button fx:id="btn_cancel" mnemonicParsing="false" onAction="#cancelClicked" text="Cancel">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font></Button>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="225.0" spacing="5.0">
                <children>
-                  <Button fx:id="btn_regPlayer" mnemonicParsing="false" onAction="#regPlayerClicked" text="Save local player">
+                  <Button fx:id="btn_regPlayer" mnemonicParsing="false" onAction="#regPlayerClicked" text="Save player">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Button>
                   <Button fx:id="btn_helpRegPlayer" mnemonicParsing="false" onAction="#helpRegPlayerClicked" text="?">
                      <font>

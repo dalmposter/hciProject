@@ -132,15 +132,7 @@ public class GameController extends Controller
     @FXML
     void restartClicked(ActionEvent event)
     {
-    	currGame = new Game(currGame);
-    	
-    	updateP1();
-    	updateP2();
-    	
-    	updateLeader();
-    	
-    	lbl_lastScoreP1.setText("");
-    	lbl_lastScoreP2.setText("");
+    	initialise(currGame.getP1(), currGame.getP2(), currGame.getGoal(), tutorial);
     }
 
     @FXML
@@ -253,6 +245,10 @@ public class GameController extends Controller
     	{
     		lbl_tutorial.setText("In Dice Mania you and your opponent will take turns\nrolling 3 dice. Click '" + btn_rollP1.getText() + "' to do so.");
     	}
+    	else
+    	{
+    		lbl_tutorial.setText("");
+    	}
     }
     
     public void initialise(Player p1, Player p2, int goal)
@@ -265,6 +261,7 @@ public class GameController extends Controller
     	btn_rollP1.setText("Roll " + p1.getName());
     	btn_rollP2.setText("Roll " + p2.getName());
     	
+    	btn_rollP1.setDisable(false);
     	btn_rollP2.setDisable(true);
     	
     	lbl_p1.setText(p1.getName());

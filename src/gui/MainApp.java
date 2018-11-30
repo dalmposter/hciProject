@@ -56,7 +56,7 @@ public class MainApp extends Application
 		//localPlayers = new ArrayList<>();
 		
 		//creating/finding data directory
-		dataLocation = System.getProperty("user.home") + "\\Dice Mania";
+		dataLocation = System.getProperty("user.home") + "/Dice Mania";
 		File dataDir = new File(dataLocation);
 		if(dataDir.exists())
 		{

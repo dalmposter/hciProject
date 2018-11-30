@@ -46,15 +46,14 @@
                      <children>
                         <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#playClicked" text="Play!">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="22.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_tutorial" mnemonicParsing="false" onAction="#tutorialClicked" text="Tutorial">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
+                        <CheckBox fx:id="chk_tutorial" alignment="CENTER" mnemonicParsing="false" text="Show tutorial" />
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
                <opaqueInsets>
@@ -66,11 +65,11 @@
             </VBox>
             <Button fx:id="btn_newPlayer" mnemonicParsing="false" onAction="#newPlayerClicked" text="Register New Player">
                <font>
-                  <Font size="22.0" />
+                  <Font size="18.0" />
                </font></Button>
             <Button fx:id="btn_quit" mnemonicParsing="false" onAction="#quitClicked" text="Quit">
                <font>
-                  <Font size="22.0" />
+                  <Font size="18.0" />
                </font></Button>
          </children>
          <padding>

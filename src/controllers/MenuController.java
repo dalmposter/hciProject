@@ -9,6 +9,7 @@ import gui.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import main.Player;
 import javafx.scene.control.TextField;
@@ -35,7 +36,7 @@ public class MenuController extends Controller
     private TextField txt_pointGoal;
     
     @FXML
-    private Button btn_tutorial;
+    private CheckBox chk_tutorial;
     
     private void play(boolean tutorial)
     {
@@ -110,15 +111,9 @@ public class MenuController extends Controller
     }
     
     @FXML
-    void tutorialClicked(ActionEvent event)
-    {
-    	play(true);
-    }
-    
-    @FXML
     void playClicked(ActionEvent event)
     {	
-    	play(false);
+    	play(chk_tutorial.isSelected());
     }
 
     @FXML
@@ -149,17 +144,20 @@ public class MenuController extends Controller
     		combo_p2.getItems().add(p.getName());
     	});
     	
-    	File dataFolder = new File(MainApp.dataLocation);
-    	File[] possiblePlayers = dataFolder.listFiles();
-    	
-    	int len = possiblePlayers.length;
-    	for(int i = 0; i < len; i++)
+    	if(MainApp.canSavePlayers)
     	{
-    		String fileName = possiblePlayers[i].getName();
-    		if(fileName.substring(fileName.length() - 4).equals(".dat"))
+    		File dataFolder = new File(MainApp.dataLocation);
+    		File[] possiblePlayers = dataFolder.listFiles();
+    	
+    		int len = possiblePlayers.length;
+    		for(int i = 0; i < len; i++)
     		{
-    			combo_p1.getItems().add(fileName.substring(0, fileName.length() - 4));
-    			combo_p2.getItems().add(fileName.substring(0, fileName.length() - 4));
+    			String fileName = possiblePlayers[i].getName();
+    			if(fileName.substring(fileName.length() - 4).equals(".dat"))
+    			{
+    				combo_p1.getItems().add(fileName.substring(0, fileName.length() - 4));
+    				combo_p2.getItems().add(fileName.substring(0, fileName.length() - 4));
+    			}
     		}
     	}
     	

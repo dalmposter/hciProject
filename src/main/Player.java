@@ -155,11 +155,11 @@ public class Player
 		{
 			System.out.println("Started writing to disk... ");
 			
-			File dataFile = new File(MainApp.dataLocation + "\\" + name + ".dat");
+			File dataFile = new File(MainApp.dataLocation + "/" + name + ".dat");
 			System.out.println("Writing to : " + dataFile.getPath().toString());
 			if(dataFile.exists()) dataFile.delete();
 			
-			FileWriter fileWriter = new FileWriter(MainApp.dataLocation + "\\" + name + ".dat");
+			FileWriter fileWriter = new FileWriter(MainApp.dataLocation + "/" + name + ".dat");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			
 			printWriter.println(name);
@@ -192,7 +192,7 @@ public class Player
 	{
 		try
 		{	
-			FileReader fr = new FileReader(MainApp.dataLocation + "\\" + name + ".dat");
+			FileReader fr = new FileReader(MainApp.dataLocation + "/" + name + ".dat");
 			BufferedReader br = new BufferedReader(fr);
 			
 			name = br.readLine();
@@ -206,7 +206,7 @@ public class Player
 			
 			careerWins = Integer.valueOf(br.readLine());
 			
-			//if we were read from disk then we're not a temp player
+			//if we were read from disk then we're not a guest player
 			temp = false;
 		}
 		catch(Exception e)
