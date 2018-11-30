@@ -44,6 +44,8 @@ public class MainApp extends Application
 		controller.initialise();
 		controller.setStage(primaryStage);
 		
+		//anonymous inner class defined to run welcome popup as a seperate thread.
+		//prevents windows thinking the program is "not responding" and lets the gui load in the backgorund
 		Runnable intro = new Runnable()
 		{
 			public void run()
