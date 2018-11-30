@@ -10,7 +10,6 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import main.Game;
 import main.Player;
@@ -316,11 +315,13 @@ public class GameController extends Controller
 	    	{
 	    		img_p1Leading.setVisible(true);
 	    		img_p2Leading.setVisible(false);
+	    		System.out.println("P1");
 	    	}
 	    	else
 	    	{
 	    		img_p1Leading.setVisible(false);
 	    		img_p2Leading.setVisible(true);
+	    		System.out.println("P2");
 	    	}
     	}
     	else
