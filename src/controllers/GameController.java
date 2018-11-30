@@ -253,7 +253,6 @@ public class GameController extends Controller
     
     public void initialise(Player p1, Player p2, int goal)
     {
-    	//TODO: init
     	currGame = new Game(p1, p2, goal);
     	p1.resetWins();
     	p2.resetWins();

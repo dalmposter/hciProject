@@ -41,8 +41,10 @@ public class MainApp extends Application
 		primaryStage.setScene(new Scene(mainPane));
 		primaryStage.show();
 		
-		controller.setCombos();
+		controller.initialise();
 		controller.setStage(primaryStage);
+		
+		JOptionPane.showMessageDialog(null, "Welcome to Dice Mania, the game of unreasonable luck!\nMake sure to tick the tutorial box if you're new, otherwise you know what's up, enjoy!", "welcome", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static void main(String[] args)

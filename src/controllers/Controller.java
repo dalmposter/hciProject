@@ -33,7 +33,7 @@ public class Controller
 			stage.setScene(new Scene(mainPane));
 			stage.show();
 		
-			controller.setCombos();
+			controller.initialise();
 			controller.setStage(stage);
 		}
 		catch(Exception e)

@@ -38,6 +38,9 @@ public class MenuController extends Controller
     @FXML
     private CheckBox chk_tutorial;
     
+    @FXML
+    Button btn_helpPlay;
+    
     private void play(boolean tutorial)
     {
     	int goal = 0;
@@ -131,7 +134,7 @@ public class MenuController extends Controller
     	System.exit(0);
     }
 
-    public void setCombos()
+    public void initialise()
     {
     	combo_p1.getItems().clear();
     	combo_p2.getItems().clear();
@@ -165,5 +168,11 @@ public class MenuController extends Controller
     	combo_p2.setValue(MainApp.DEFAULT_PLAYERS[1]);
     	
     	txt_pointGoal.setText("25");
+    }
+    
+    @FXML
+    void helpPlayClicked(ActionEvent event)
+    {
+    	JOptionPane.showMessageDialog(null, "Choose 2 players from the drop down lists to do battle!\nSelect an amount of points required to win (recommended 25) and go!\nIf you're new here go ahead and tick that tutorial box", "help", JOptionPane.INFORMATION_MESSAGE);
     }
 }

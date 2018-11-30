@@ -44,6 +44,11 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" spacing="10.0">
                      <children>
+                        <Button fx:id="btn_helpPlay" mnemonicParsing="false" onAction="#helpPlayClicked" text="?">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
                         <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#playClicked" text="Play!">
                            <font>
                               <Font size="22.0" />
