@@ -55,14 +55,13 @@ public class DiceDisplay extends Thread
 		
 		System.out.println("Created DiceDisplay instance with id: " + id + " and result: " + result);
 		
+		//update gui repeatedly to make it look like the dice are scrolling through random numbers
 		for(int i = 0; i < 10; i++)
 		{
 			thisShow = rand.nextInt(6) + 1;
 			
-			//TODO: REWRITE THIS TO TAKE A 2 COLOURS AND PLOT DICE WITH SHAPES BASED ON THESE THINGS
 			String imgName = "/d" + id + "-" + thisShow + ".png";
 			
-			//System.out.println("Looking for image: " + "/d" + id + "-" + thisShow + ".png");
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run()
@@ -85,6 +84,7 @@ public class DiceDisplay extends Thread
 			}
 		}
 		
+		//update gui with final result
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run()
@@ -95,6 +95,7 @@ public class DiceDisplay extends Thread
 		
 		System.out.println(id + ": set image to: " + "/d" + id + "-" + result + ".png");
 		
+		//if all DiceDisplay threads are done we need to reveal the result to the players
 		done[id] = true;
 		if(done[0] && done[1] && done[2])
 		{

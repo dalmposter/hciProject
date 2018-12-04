@@ -14,7 +14,10 @@ import javafx.scene.image.Image;
 public class Player
 {
 	private String name;
-	private int score, lastScore, wins, careerWins, defaultPicStatus;
+	private int score, lastScore, wins, careerWins;
+	
+	//0 = custom picture, 1 = default male, 2 = default female
+	private int defaultPicStatus;
 	private File pic;
 	private boolean temp = true;
 	
@@ -74,6 +77,9 @@ public class Player
 	public void setCareerWins(int wins)
 	{
 		careerWins = wins;
+		
+		//update career wins
+		if(!temp) writeToDisk();
 	}
 	
 	public int getCareerWins()
@@ -155,19 +161,24 @@ public class Player
 		{
 			System.out.println("Started writing to disk... ");
 			
+			//create reference to file and delete it if it exists
 			File dataFile = new File(MainApp.dataLocation + "/" + name + ".dat");
 			System.out.println("Writing to : " + dataFile.getPath().toString());
 			if(dataFile.exists()) dataFile.delete();
 			
+			//create file and writers
 			FileWriter fileWriter = new FileWriter(MainApp.dataLocation + "/" + name + ".dat");
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			
+			//begin printing data
 			printWriter.println(name);
 			printWriter.println(defaultPicStatus);
 			
+			//write path to custom picture or n/a if not applicable
 			if(defaultPicStatus > 0) printWriter.println("n/a");
 			else printWriter.println(pic.getPath().toString());
 			
+			//write wins
 			printWriter.println(careerWins);
 			
 			printWriter.close();
@@ -192,18 +203,22 @@ public class Player
 	{
 		try
 		{	
+			//create readers
 			FileReader fr = new FileReader(MainApp.dataLocation + "/" + name + ".dat");
 			BufferedReader br = new BufferedReader(fr);
 			
+			//read name and pic status
 			name = br.readLine();
 			defaultPicStatus = Integer.valueOf(br.readLine());
 			
+			//get custom picture or skip this line if not applicable
 			if(defaultPicStatus == 0)
 			{
 				pic = new File(br.readLine());
 			}
 			else br.readLine();
 			
+			//read wins
 			careerWins = Integer.valueOf(br.readLine());
 			
 			//if we were read from disk then we're not a guest player

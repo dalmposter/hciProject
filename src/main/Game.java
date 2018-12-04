@@ -18,6 +18,7 @@ public class Game
 	//Standard constructor
 	public Game(Player p1, Player p2, int targetScore)
 	{
+		//reset players and initialse default values
 		this.p1 = p1;
 		this.p2 = p2;
 		p1.reset();
@@ -71,6 +72,7 @@ public class Game
 		return p1Leading;
 	}
 	
+	//depreciated function, now just prints some useful information to logs
 	private void doWin(int winner)
 	{
 		System.out.println("player " + winner + " won! (3 means a draw)");
@@ -87,6 +89,7 @@ public class Game
 		else tie = true;
 	}
 	
+	//Play the next turn of this game and return rolls
 	public ArrayList<Integer> playTurn()
 	{
 		//get current player
@@ -104,6 +107,7 @@ public class Game
 		
 		int scored;
 		
+		//work out how much we scored
 		if(res.get(0) == res.get(1))
 		{
 			if(res.get(0) == res.get(2))
@@ -133,6 +137,7 @@ public class Game
 			scored = 1;
 		}
 		
+		//all the logic for playing this turn is here, just return rolls for display purposes
 		System.out.println(currentPlayer.getName() + " got " + scored + " points!");
 		currentPlayer.addScore(scored);
 		updateLeading();
@@ -160,6 +165,7 @@ public class Game
 			System.out.println("Rejected win check as it is turn: " + turn + " (mid round)");
 			return 0;
 		}
+		//check if any player exceeds the goal and call necessary functions then return result
 		if(p1.getScore() >= goal)
 		{
 			if(p2.getScore() >= goal)
@@ -183,49 +189,5 @@ public class Game
 			return 2;
 		}
 		else return 0;
-	}
-	
-	/**
-	 * Play next turn
-	 * @return points gained by current player
-	 */
-	public int takeTurn()
-	{
-		ArrayList<Integer> res = new ArrayList<>();
-		System.out.println("rolled: ");
-		for(Dice d : dice)
-		{
-			res.add(d.roll());
-			System.out.print(d.lastRoll() + ", ");
-		}
-		
-		if(res.get(0) == res.get(1))
-		{
-			if(res.get(0) == res.get(2))
-			{
-				//3 of a kind
-				return 18;
-			}
-			else
-			{
-				//pair on 0 and 1
-				return res.get(0) * 2;
-			}
-		}
-		else if(res.get(0) == res.get(2))
-		{
-			//pair on 0 and 2
-			return res.get(0) * 2;
-		}
-		else if(res.get(1) == res.get(2))
-		{
-			//pair on 1 and 2
-			return res.get(1) * 2;
-		}
-		else
-		{
-			//no sets
-			return 1;
-		}
 	}
 }

@@ -7,6 +7,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.Player;
 
+/**
+ * Superclass for controllers. Contains methods for moving between scenes
+ * @author Dominic Cousins
+ *
+ */
 public class Controller
 {
 	protected Stage stage;
@@ -19,6 +24,9 @@ public class Controller
 	//Functions to change scene, inherited by all controllers
 	//-----------------------------------------------------------------------------------------------------
 	
+	/**
+	 * go to MainMenu.fxml, calling initialise on its controller
+	 */
 	protected void gotoMenu()
 	{
 		MenuController controller = new MenuController();
@@ -43,6 +51,9 @@ public class Controller
 		}
 	}
 	
+	/**
+	 * go to RegisterPlayer.fxml, calling initialise on its controller
+	 */
 	protected void gotoRegister()
 	{
 		RegisterController controller = new RegisterController();
@@ -69,6 +80,13 @@ public class Controller
 		}
 	}
 	
+	/**
+	 * Go to MainGame.fxml, calling initialise in its controller and passing it Players: p1, p2, the games goal and a tutorial switch
+	 * @param p1 Player 1
+	 * @param p2 Player 2
+	 * @param goal the point goal for this game
+	 * @param tutorial whether the tutorial should be displayed this time
+	 */
 	protected void gotoGame(Player p1, Player p2, int goal, boolean tutorial)
 	{
 		GameController controller = new GameController();
